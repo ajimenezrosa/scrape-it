@@ -1,5 +1,23 @@
 def fetch_data():
-    pass
+     '''
+    Retrieves data from the given url.
+    Returns a string representing the whole table data
+    '''
+    data_string = ''
+    try:
+        url_1 = "https://cdn.rawgit.com/younginnovations/"
+        url_2 = "internship-challenges/master/data-analysis/scrape-it/exampledata.html"
+        url = url_1 + url_2
+        with urllib.request.urlopen(url) as url_link:
+            for line in url_link:
+                data_string += line.decode('utf-8')
+
+    except urllib.request.URLError as e:
+        print("ERROR Connecting to Web page", e)
+
+    finally:
+        return data_string
+
 
 def process_data(data_string):
     pass
