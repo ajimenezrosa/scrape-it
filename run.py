@@ -20,7 +20,35 @@ def fetch_data():
 
 
 def process_data(data_string):
-    pass
+    '''
+    :param data_string: accepts a string representing the table data
+    :return: string after removing tags and processing it
+    '''
+    string_to_return = ''
+    # Generates a list of data of all row
+    rows = data_string.split("<tr>")
+    rows.pop(0)  # Removes first <table> tag
+
+    # Reads reach row of information from the rows List
+    for row in rows:
+        row_string = ''
+
+        for data in row:  # Creates a full string for a row item
+            row_string += data
+
+        # Creates a list with only required information
+        row_data = re.findall(r'<td>(.*?)</td>', row_string)
+
+        row_string = ''
+        # Creates a string with data to be written to the file
+        for data in row_data:
+            row_string += '"' + data + '"' + ", "
+
+        # Removes the ',' at the end of the string and adds newline character
+        string_to_return += row_string[:-2] + "\n"
+
+    return string_to_return
+
 
 def write_data(data_string):
     pass
