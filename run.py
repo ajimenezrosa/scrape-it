@@ -1,5 +1,9 @@
+import urllib.request
+import os
+import re
+
 def fetch_data():
-     '''
+    '''
     Retrieves data from the given url.
     Returns a string representing the whole table data
     '''
