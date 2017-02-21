@@ -51,7 +51,21 @@ def process_data(data_string):
 
 
 def write_data(data_string):
-    pass
+    '''
+    Accepts a string to be written to the file and writes to the file
+    '''
+    if os.name == 'posix':
+        file_path = 'out/data.csv'
+    else:
+        file_path = 'out\\data.csv'
+
+    try:
+        # Opens .csv file to write the data
+        with open(file_path, 'w') as fp:
+                fp.write(data_string)
+    except:
+        print("Error Writing to file")
+
 
 
 def main():
