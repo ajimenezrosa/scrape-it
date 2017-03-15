@@ -80,7 +80,7 @@ def main():
     data_string = fetch_data()
     if data_string:
         write_string = process_data(data_string)
-        write_data(process_data(write_string))
+        write_data(write_string)
         print("Successful")
     else:
         print("No data found")
